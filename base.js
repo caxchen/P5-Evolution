@@ -9,7 +9,7 @@ let currentInspiration;
 let currentCanvas;
 let currentInspirationPixels;
 
-function preload() {//asdf
+function preload() {
   
 
   let allInspirations = p4_inspirations();
