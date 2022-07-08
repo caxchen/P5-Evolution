@@ -1,0 +1,15 @@
+TITLE: P5: Terrible Genetic Image Generator
+starter code by Adam Smith
+edits by Casey Chen
+
+DESCRIPTION
+This program uses a genetic algorithm to recreate 3 black and white images with greyscale dots.  
+
+MUTATION APPROACH
+This program keeps track of a "proposed" image and a "current" image.  Each cycle, it creates a proposed image.  If that proposed image is better than "current" image, it saves that image as its current image.  Over more and more cycles, better and better images are selected over the worse ones, accumulating good changes, making it look more and more like the original picture.
+
+DESIGN PARAMETER CHOICES
+The only data that the design class uses are color and ellipseDim.  These are arrays, and each array element corresponds to one dot.  "color" holds the grayscale values for each dot from 0 to 255, and it is passed to p5's fill function in p4_render.  "ellipseDim" holds the x and y position data of each point.  It's named ellipseDim instead of circlePos or something because of earlier experimentation, and I thought that it would be most time-efficient to just leave the name.  "commonColors" is an unused vestigial piece of data that was from a previous experiment in trying to keep track of commonly occurring colors, back before I switched to greyscale to save time.
+
+ARTIST'S STATEMENT
+About 60% of my time was spent understanding and experimenting on the starter code and formulating a plan.  At first, I just started randomly generating randomly colored ellipses, but I ran into the bug where it looked like each newly created ellipse would stay on the background.  After a long time of debugging, I discovered it was because I wasn't creating a background in p4_render.  Also, the randomly colored ellipses strategy either didn't work or was far too slow.  I then tried to use pointillism, creating little randomly colored dots everywhere, but it either didn't work or was far too slow.  I then decided to switch to greyscale in the interest of time, starting with the drag king Lucille Ball image.  I tried pointillism again, with really small dots, circles of diameter 2.  Then I ran into a bug with the arrays, and after a long debugging session, I discovered that design's arrays would only hold 500 elements for some reason.  So, I made it so that if the arrays were "full", p4_mutate would only modify the existing points.  I hope this isn't a hardware-based issue.  This is where I achieved my first sign of success.  Then, I noticed that the white portions of the pointillism images were blending into the white background, so I made it so the background would change color to the average greyscale value of the colors of all the dots.  This only made the grey areas blend into the grey background.  To remedy this, I made the background a garish blue; on the hue cube of the google color picker, it was the blue that was the farthest away from black and white.  This worked.  I still can't believe I actually finished this assignment in time.
