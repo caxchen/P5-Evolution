@@ -40,7 +40,7 @@ function inspirationChanged(nextInspiration) {
 
 function setup() {
   //frameRate(5);
-  currentCanvas = createCanvas(width*2, height*2);
+  currentCanvas = createCanvas(width, height);
   currentCanvas.parent(document.getElementById("active"));
   currentScore = Number.NEGATIVE_INFINITY;
   currentDesign = p4_initialize(currentInspiration);
