@@ -39,7 +39,8 @@ function inspirationChanged(nextInspiration) {
 
 
 function setup() {
-  currentCanvas = createCanvas(width, height);
+  //frameRate(5);
+  currentCanvas = createCanvas(width*2, height*2);
   currentCanvas.parent(document.getElementById("active"));
   currentScore = Number.NEGATIVE_INFINITY;
   currentDesign = p4_initialize(currentInspiration);
@@ -89,6 +90,8 @@ function memorialize() {
 let mutationCount = 0;
 
 function draw() {
+  image(currentInspiration.image, 0,0, width, height);
+  //background(255);
   
   if(!currentDesign) {
     return;
@@ -96,18 +99,21 @@ function draw() {
   randomSeed(mutationCount++);
   currentDesign = JSON.parse(JSON.stringify(bestDesign));
   rate.innerHTML = slider.value;
-  p4_mutate(currentDesign, currentInspiration, slider.value/100.0);
-  
-  randomSeed(0);
-  p4_render(currentDesign, currentInspiration);
+
+  //It's supposed to create a proposed design.  If that proposed design is better than current design, then it's supposed to adopt 
+  //that proposed design as the current design.  So it would be evolving with natural selection based on the evaluate function.
+  let proposedDesign = p4_mutate(currentDesign, currentInspiration, slider.value/100.0);  //I modified p4_mutate to return a mutated copy of currentDesign.
+  p4_render(proposedDesign, currentInspiration);
   let nextScore = evaluate();
   activeScore.innerHTML = nextScore;
+
   if (nextScore > currentScore) {
+    currentDesign = proposedDesign;
     currentScore = nextScore;
     bestDesign = currentDesign;
     memorialize();
     bestScore.innerHTML = currentScore;
-  }
+  } else p4_render(currentDesign, currentInspiration);
   
   fpsCounter.innerHTML = Math.round(frameRate());
 }
