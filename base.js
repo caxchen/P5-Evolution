@@ -37,10 +37,12 @@ function inspirationChanged(nextInspiration) {
 }
 
 
-
+let multipliedCanvas = false;
 function setup() {
-  //frameRate(5);
-  currentCanvas = createCanvas(width, height);
+  if (!multipliedCanvas) {
+    currentCanvas = createCanvas(width*3, height*3);
+    multipliedCanvas = true;
+  } else currentCanvas = createCanvas(width, height);
   currentCanvas.parent(document.getElementById("active"));
   currentScore = Number.NEGATIVE_INFINITY;
   currentDesign = p4_initialize(currentInspiration);
