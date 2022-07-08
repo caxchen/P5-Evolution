@@ -2,9 +2,12 @@
 
 function p4_inspirations() {  
   return [
-    {name: "Lake", assetUrl: "https://media.istockphoto.com/photos/black-and-white-photo-of-bowman-lake-picture-id155170343?k=20&m=155170343&s=612x612&w=0&h=oo-9hveuRqsURrD3nREONU3I4B1hFMvJ4nuZ3qauifE="},
-    {name: "Gazelle Herder", assetUrl: "https://www.thisiscolossal.com/wp-content/uploads/2017/03/anim-2.jpg"},
-    {name: "Lucille Ball as Charlie Chaplin", assetUrl: "https://i.redd.it/g187u4m3bs661.jpg"}];
+    {name: "Lake", assetUrl: "./lake.jpg"},
+    {name: "Gazelle Herder", assetUrl: "./herder.jpg"},
+    {name: "Lucille Ball as Charlie Chaplin", assetUrl: "./chaplin.jpg"}];
+    //https://media.istockphoto.com/photos/black-and-white-photo-of-bowman-lake-picture-id155170343?k=20&m=155170343&s=612x612&w=0&h=oo-9hveuRqsURrD3nREONU3I4B1hFMvJ4nuZ3qauifE=
+    //https://www.thisiscolossal.com/wp-content/uploads/2017/03/anim-2.jpg
+    //https://i.redd.it/g187u4m3bs661.jpg
 }
 
 function p4_initialize(inspiration) {
