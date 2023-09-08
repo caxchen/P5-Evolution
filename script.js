@@ -13,8 +13,9 @@ function p4_inspirations() {
 function p4_initialize(inspiration) {
   let color = [];
   let ellipseDim = [];
-  let commonColors = [];
-  return {color, ellipseDim, commonColors};
+  let smallDotColors = [];
+  let smallDotPos = [];
+  return {color, ellipseDim, smallDotColors, smallDotPos};
 }
 
 function p4_render(design, inspiration) {
@@ -24,6 +25,11 @@ function p4_render(design, inspiration) {
     fill(design.color[i]);
     circle(design.ellipseDim[i][0], design.ellipseDim[i][1], width/12);
   }
+  /*for (let j=0; j<design.smallDotColors.length; j++) {
+    fill(design.smallDotColors[j]);
+    console.log(design.smallDotPos[j]);
+    //circle(design.smallDotPos[j][0], design.smallDotPos[j][1], width/40);
+  }*/
 }
 
 
@@ -38,6 +44,19 @@ function p4_mutate(design, inspiration, rate) {
     designCopy.color[floor(gotRandom2*designCopy.color.length)] = Math.random()*255;
     designCopy.ellipseDim[floor(gotRandom2*designCopy.color.length)] = ([Math.random()*width, Math.random()*height]);
   }
+
+  /*if (designCopy.color.length >= 100) {
+    //console.log(designCopy.smallDotColors.length);
+    let gotRandom3 = Math.random();
+    if (designCopy.smallDotColors.length < 200  && gotRandom3 > 0.5) {
+      designCopy.smallDotColors.push(Math.random()*255);
+      designCopy.smallDotPos.push([Math.random()*width, Math.random*height]);
+    } else if (designCopy.smallDotColors.length == 200 || gotRandom3 <= 0.5) {
+      let gotRandom4 = Math.random();
+      designCopy.smallDotColors[floor(gotRandom4*designCopy.smallDotColors.length)] = Math.random()*255;
+      designCopy.smallDotPos[floor(gotRandom4*designCopy.smallDotColors.length)] = [Math.random()* width, Math.random()*height];\
+    }
+  }*/
 
   return designCopy;
 }

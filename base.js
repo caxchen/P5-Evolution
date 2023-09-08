@@ -100,11 +100,11 @@ function draw() {
   }
   randomSeed(mutationCount++);
   currentDesign = JSON.parse(JSON.stringify(bestDesign));
-  rate.innerHTML = slider.value;
+  //rate.innerHTML = slider.value;
 
   //It's supposed to create a proposed design.  If that proposed design is better than current design, then it's supposed to adopt 
   //that proposed design as the current design.  So it would be evolving with natural selection based on the evaluate function.
-  let proposedDesign = p4_mutate(currentDesign, currentInspiration, slider.value/100.0);  //I modified p4_mutate to return a mutated copy of currentDesign.
+  let proposedDesign = p4_mutate(currentDesign, currentInspiration, 1.0);  //I modified p4_mutate to return a mutated copy of currentDesign.  //8 Aug 2023  the last 1 parameter used to be slider.value/100.0
   p4_render(proposedDesign, currentInspiration);
   let nextScore = evaluate();
   activeScore.innerHTML = nextScore;
